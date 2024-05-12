@@ -42,30 +42,51 @@ In this project, customer-level data is analyzed which has been collected and an
 
 The project leverages an openly accessible dataset comprising credit card transactions, encompassing both genuine and fraudulent activities. This dataset serves as the foundation for training and assessing the efficacy of the fraud detection model. The dataset was obtained from [Kaggle Website](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud), a prominent online platform and community catering to professionals in data science, machine learning, and data research. The dataset has a total of 2,84,807 transactions, out of which 492 are fraudulent. Since the dataset is highly imbalanced, so it needs to be handled before model building.
 
-## How to install and run
+## Installation
 
 1. Clone project
    `git clone https://github.com/`
 2. Open in code editor, for example VSCode
 3. create a virtual environment via terminal:
-   `pip install virtualenv `
-   `virtualenv env`
-   `source env\Scripts\activate`
+   ```sh
+   pip install virtualenv
+   ```
+   ```sh
+   virtualenv env
+   ```
+   ```sh
+   source env\Scripts\activate
+   ```
 4. Install dependencies via terminal.
    `pip install -U scikit-learn pandas numpy matplotlib seaborn`
 5. Install streamlit in terminal
-   `pip install streamlit`
+   ```sh
+   pip install streamlit
+   ```
 6. Run project in terminal
-   `streamlit run main.py`
+   ```sh
+   streamlit run main.py
+   ```
 
-## How to input "manual transactions" for verification
+## How to "manual transactions" for verification
 
 You have 3 csv files. The creditcard.csv file contains all transactions. In the other two files, transactions are divided into fraudulent and legal ones.
 
 1. Open any csv file
-2. Copy any line. For example: -1.1152878574425795,-19.1397328634111,9.28684735978866,-20.134992104854,7.81867331002574,-15.652207677206302,-1.66834770694329,-21.3404780994803,0.6418997011947,-8.55011032700099,-16.6496281595399,4.81815244707108,-9.44531478308794,1.3170562933234098,-7.24346097400378,0.830910291033798,-9.533257050393189,-18.750641147467398,-8.09264877340557,3.32675827497024,0.42720343146936,-2.1826919456095504,0.5205430723666421,-0.7605564151887328,0.6627666383972359,-0.948454306235033,0.12179592582979301,-3.3818429293561,-1.2565236213625801,0.20610286556509647,1
-3. Delete ",1" or ",0" in the end.
-4. Paste new line in input label and submit. For example: -1.1152878574425795,-19.1397328634111,9.28684735978866,-20.134992104854,7.81867331002574,-15.652207677206302,-1.66834770694329,-21.3404780994803,0.6418997011947,-8.55011032700099,-16.6496281595399,4.81815244707108,-9.44531478308794,1.3170562933234098,-7.24346097400378,0.830910291033798,-9.533257050393189,-18.750641147467398,-8.09264877340557,3.32675827497024,0.42720343146936,-2.1826919456095504,0.5205430723666421,-0.7605564151887328,0.6627666383972359,-0.948454306235033,0.12179592582979301,-3.3818429293561,-1.2565236213625801,0.20610286556509647 (At the end of the new line, I deleted ",1")
+2. Copy any line. For example:
+
+```sh
+-1.1152878574425795,-19.1397328634111,9.28684735978866,-20.134992104854,7.81867331002574,-15.652207677206302,-1.66834770694329,-21.3404780994803,0.6418997011947,-8.55011032700099,-16.6496281595399,4.81815244707108,-9.44531478308794,1.3170562933234098,-7.24346097400378,0.830910291033798,-9.533257050393189,-18.750641147467398,-8.09264877340557,3.32675827497024,0.42720343146936,-2.1826919456095504,0.5205430723666421,-0.7605564151887328,0.6627666383972359,-0.948454306235033,0.12179592582979301,-3.3818429293561,-1.2565236213625801,0.20610286556509647,1
+```
+
+3. Delete `,1` or `,0` in the end.
+4. Paste new line in input label and submit. For example:
+
+```sh
+-1.1152878574425795,-19.1397328634111,9.28684735978866,-20.134992104854,7.81867331002574,-15.652207677206302,-1.66834770694329,-21.3404780994803,0.6418997011947,-8.55011032700099,-16.6496281595399,4.81815244707108,-9.44531478308794,1.3170562933234098,-7.24346097400378,0.830910291033798,-9.533257050393189,-18.750641147467398,-8.09264877340557,3.32675827497024,0.42720343146936,-2.1826919456095504,0.5205430723666421,-0.7605564151887328,0.6627666383972359,-0.948454306235033,0.12179592582979301,-3.3818429293561,-1.2565236213625801,0.20610286556509647
+```
+
+(At the end of the new line, I deleted `,1`)
 
 ## Project Pipeline
 
@@ -75,7 +96,7 @@ The project pipeline can be briefly summarized in the following four steps:
 
 - **Exploratory data analytics (EDA):** Performing Univariate and bivariate analyses of the data, followed by feature transformations, if necessary. For the current data set, because Gaussian variables are used, no Z-scaling is performed. However, skewness is checked in the data and mitigated if necessary, as it might cause problems during the model-building phase.
 
-- **Train/Test Split:**After train/test split, which performed in order to check the performance of models with unseen data. Here, for validation, k-fold cross-validation method is used. An appropriate k value is choosen so that the minority class is correctly represented in the test folds.
+- **Train/Test Split:** After train/test split, which performed in order to check the performance of models with unseen data. Here, for validation, k-fold cross-validation method is used. An appropriate k value is choosen so that the minority class is correctly represented in the test folds.
 
 - **Model-Building/Hyperparameter Tuning:** This is the final phase where different models are tested/applied and their hyperparameters are fine-tuned until the desired level of performance on the given dataset is reached.
 
