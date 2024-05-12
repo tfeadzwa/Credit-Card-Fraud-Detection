@@ -2,6 +2,8 @@
 
 ## A web application for analyzing bank transactions and detecting fraud.
 
+Welcome to the Credit Card Fraud Detection project repository! This project leverages machine learning techniques to tackle the pervasive issue of fraudulent credit card transactions. By analyzing a dataset comprising both legitimate and fraudulent activities, our goal is to develop a robust fraud detection model that aids in proactive monitoring and prevention. Follow along to learn more about the problem statement, dataset, methodology, and insights gained from this endeavor. Let's work together to safeguard financial transactions and protect customers from fraudulent activities.
+
 ## Understanding and Defining Fraud
 
 Credit card fraud is any dishonest act and behaviour to obtain information without the proper authorization from the account holder for financial gain. Among different ways of frauds, Skimming is the most common one, which is the way of duplicating of information located on the magnetic strip of the card. Apart from this, the other ways are:
@@ -70,7 +72,11 @@ You have 3 csv files. The creditcard.csv file contains all transactions. In the 
 The project pipeline can be briefly summarized in the following four steps:
 
 - **Data Understanding:** This is the initial phase which involves loading the data and understanding the its features. This helps to choose the features that will be required for the final model.
+
 - **Exploratory data analytics (EDA):** Performing Univariate and bivariate analyses of the data, followed by feature transformations, if necessary. For the current data set, because Gaussian variables are used, no Z-scaling is performed. However, skewness is checked in the data and mitigated if necessary, as it might cause problems during the model-building phase.
+
 - **Train/Test Split:**After train/test split, which performed in order to check the performance of models with unseen data. Here, for validation, k-fold cross-validation method is used. An appropriate k value is choosen so that the minority class is correctly represented in the test folds.
+
 - **Model-Building/Hyperparameter Tuning:** This is the final phase where different models are tested/applied and their hyperparameters are fine-tuned until the desired level of performance on the given dataset is reached.
+
 - **Model Evaluation:** This phase involves evaluation of the models using appropriate evaluation metrics. Since the data is imbalanced it is is more important to identify which are fraudulent transactions accurately than the non-fraudulent, that is, employing an appropriate evaluation metric which reflects the project research goal.
