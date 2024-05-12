@@ -112,3 +112,9 @@ The project pipeline can be briefly summarized in the following four steps:
 - **Model-Building/Hyperparameter Tuning:** This is the final phase where different models are tested/applied and their hyperparameters are fine-tuned until the desired level of performance on the given dataset is reached.
 
 - **Model Evaluation:** This phase involves evaluation of the models using appropriate evaluation metrics. Since the data is imbalanced it is is more important to identify which are fraudulent transactions accurately than the non-fraudulent, that is, employing an appropriate evaluation metric which reflects the project research goal.
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
