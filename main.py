@@ -57,7 +57,7 @@ if st.sidebar.checkbox('Show the initial data set'):
     st.subheader("Handling null values in columns")
     percent_missing = (df.isnull().sum().sort_values(ascending = False) / len(df)) * 100
     st.write('Percentage of null values: ', percent_missing)
-    st.text('We can see that there is no missing values in any of the columns.\nHence, there is no problem with null values in the entire dataset.')
+    st.text('As demonstrated above, there are no missing values in any of the columns.\nHence, there is no problem with null values in the entire dataset.')
 
     # Check if there are any duplicate rows
     st.subheader("Handling duplicate rows in dataset")
@@ -66,6 +66,8 @@ if st.sidebar.checkbox('Show the initial data set'):
     # Delete duplicate rows
     df = df.drop_duplicates() 
     st.write('Deleting duplicate rows was successful. This is a new data set:', df)
+    st.write("<p style='font-family: Source Code Pro, monospace; font-size: 0.875rem;'>As demonstrated above <span style='color: rgb(9, 171, 59); padding: 0.2em 0.4em; border-radius: 0.25rem; background: rgb(26, 28, 36);'>1854</span> duplicate rows were successfully deleted from the dataset, checking and deleting duplicate rows enhances data quality, model performance, efficiency, and generalization ability.</p>", unsafe_allow_html=True)
+
 # --- 1 CHECKBOX ---
 
 
@@ -84,7 +86,8 @@ if st.sidebar.checkbox('Show the analysis'):
     st.write('Fraud Cases: ', len(fraud))
     st.write('Valid Cases: ', len(valid))
     st.write('Compare the values for both transactions: \n', df.groupby('Class').mean())
-    st.write('Fraudulent transactions are: %.3f%%'%outlier_percentage)
+    st.text('As demonstrated above the fraudulent transactions are: %.3f%%'%outlier_percentage)
+    st.write("<p style='font-family: Source Code Pro, monospace; font-size: 0.875rem; margin-top: -0.625rem;'>This data clearly demonstrates a substantial class imbalance, where the number of valid cases <span style='color: rgb(9, 171, 59); padding: 0.2em 0.4em; border-radius: 0.25rem; background: rgb(26, 28, 36);'>(284,315)</span> vastly outweighs the number of fraud cases <span style='color: rgb(9, 171, 59); padding: 0.2em 0.4em; border-radius: 0.25rem; background: rgb(26, 28, 36);'>(492)</span>. For better accurate fraud detection, class imbalance will be addressed.</p>", unsafe_allow_html=True)
 
 
     # Method to compute countplot of given dataframe parameters:
@@ -106,12 +109,12 @@ if st.sidebar.checkbox('Show the analysis'):
         plt.show()
 
     st.subheader('Transaction ratio:')
+    st.write("<p style='font-size: 1.125rem'>Bar plot for the number of fraudulent vs non-fraudulent transcations:</p> ", unsafe_allow_html=True)
     st.pyplot(countplot_data(df, df.Class))
 
     st.subheader('The relationship of fraudulent transactions with the amount of money:\n')
     st.pyplot(pairplot_data_grid(df, "Time", "Amount", "Class"))
-    
-
+    st.write("As demonstrated by the scatter plot above the fraudulent transctions are mostly densed in the lower range of amount, whereas the non-fraudulent transctions are spreaded throughout low to high range of amount.")
 
     st.header('Bivariate Analysis')
     
@@ -265,7 +268,7 @@ if st.sidebar.checkbox('Model building on imbalanced data'):
 
 
 
-    # --- Mitigate skwenes with PowerTransformer ---
+    # --- Mitigate skewenes with PowerTransformer ---
     # Instantiate the powertransformer
     pt = PowerTransformer(method='yeo-johnson', standardize=True, copy=False)
 
@@ -285,9 +288,15 @@ if st.sidebar.checkbox('Model building on imbalanced data'):
             sns.distplot(X_train[col])
             plt.title(col+' '+str(X_train[col].skew()))
     
+    st.text("As demonstrated above, there are many variables, which are heavily skewed. Skewness\nmitigation will only be applied to these variables for bringing them into normal\ndistribution.")
 
-    st.header('Mitigate skwenes with PowerTransformer')
+    st.header('Mitigate skewness with PowerTransformer')
     st.pyplot(newSkewness())
+    
+    st.write("<p style='font-family: Source Code Pro, monospace; font-size: 0.875rem;'>Before PowerTransform: The histograms on the left show the original distribution of various features (V1-V28, Time, and Amount) in the dataset. Many of these features exhibit significant skewness, with distributions that are not symmetrical around the mean.</p>", unsafe_allow_html=True)
+    
+    st.write("<p style='font-family: Source Code Pro, monospace; font-size: 0.875rem; margin-top:-0.625rem'>After PowerTransform: The histograms on the right show the distribution of the same features after applying PowerTransform. The transformation aims to make the data distributions more Gaussian-like, which is evident from the more symmetrical and bell-shaped curves.</p>", unsafe_allow_html=True)
+    
     # --- Mitigate skwenes with PowerTransformer ---   
 # --- 3 CHECKBOX ---
 
