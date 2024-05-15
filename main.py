@@ -456,7 +456,6 @@ if st.sidebar.checkbox('Compare algorithms'):
     y_test_pred = NB_model.predict(X_test)
     acc2 = accuracy_score(y_test, y_test_pred)
 
-
     # Train Score
     st.write('Recall score: %0.4f'% recall_score(y_train, y_train_pred))
     st.write('Precision score: %0.4f'% precision_score(y_train, y_train_pred))

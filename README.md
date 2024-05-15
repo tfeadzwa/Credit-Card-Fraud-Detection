@@ -44,7 +44,7 @@ The project leverages an openly accessible dataset comprising credit card transa
 
 1. Clone project
    ```sh
-   git clone git@github.com:tfeadzwa/Credit-Card-Fraud-Detection.git
+   git clone https://github.com/tfeadzwa/Credit-Card-Fraud-Detection.git
    ```
 2. Open in code editor, e.g., [VSCode](https://code.visualstudio.com/download)
 3. Create a virtual environment in terminal:
@@ -58,7 +58,9 @@ The project leverages an openly accessible dataset comprising credit card transa
    ```
 
    ```sh
-   source env\Scripts\activate
+   source .env/Scripts/activate
+         or
+   python -m venv env
    ```
 
 4. Install dependencies in terminal.
