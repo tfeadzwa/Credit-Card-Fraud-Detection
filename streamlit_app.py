@@ -25,7 +25,7 @@ text = """
 The project leverages an openly accessible dataset comprising credit card transactions, encompassing both genuine and fraudulent activities. This dataset serves as the foundation for training and assessing the efficacy of the fraud detection model. The dataset was obtained from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud), a prominent online platform and community catering to professionals in data science, machine learning, and data research.
 """
 
-st.write(text, wrap=True)
+st.write(text)
 
 
 # Read Data into a Dataframe
@@ -81,7 +81,7 @@ if st.sidebar.checkbox('Show the analysis'):
     outlier_percentage=(df.Class.value_counts()[1]/df.Class.value_counts()[0])*100
 
     st.header('Univariate analysis')
-    st.write('Examining each feature independently to understand its distribution, characteristics, and relationship with the target variable (fraud or non-fraud).', wrap=True)
+    st.write('Examining each feature independently to understand its distribution, characteristics, and relationship with the target variable (fraud or non-fraud).')
 
     st.write('Fraud Cases: ', len(fraud))
     st.write('Valid Cases: ', len(valid))
